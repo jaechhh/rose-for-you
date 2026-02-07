@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You </title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #2b0a12, #120005);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Center rose */
+.rose {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  animation: bloom 3s ease forwards;
+  transform: scale(0);
+}
+
+.petal {
+  position: absolute;
+  width: 80px;
+  height: 120px;
+  background: radial-gradient(circle at top, #ff4d6d, #a4133c);
+  border-radius: 50%;
+  transform-origin: bottom center;
+  box-shadow: 0 0 25px rgba(255, 77, 109, 0.7);
+}
+
+.p1 { transform: rotate(0deg); }
+.p2 { transform: rotate(45deg); }
+.p3 { transform: rotate(90deg); }
+.p4 { transform: rotate(135deg); }
+.p5 { transform: rotate(180deg); }
+.p6 { transform: rotate(225deg); }
+.p7 { transform: rotate(270deg); }
+.p8 { transform: rotate(315deg); }
+
+.center {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background: radial-gradient(circle, gold, darkorange);
+  border-radius: 50%;
+  top: 62px;
+  left: 62px;
+}
+
+/* Bloom animation */
+@keyframes bloom {
+  to { transform: scale(1); }
+}
+
+/* Background floating petals */
+.bg-petal {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: rgba(255, 182, 193, 0.8);
+  border-radius: 50%;
+  animation: float linear infinite;
+}
+
+@keyframes float {
+  to {
+    transform: translateY(110vh) translateX(50px) rotate(360deg);
+  }
+}
+
+/* Bottom text */
+.signature {
+  position: absolute;
+  bottom: 5%;
+  font-size: 1.2rem;
+  color: #ffd6e0;
+  letter-spacing: 1px;
+  opacity: 0;
+  animation: fadeIn 3s ease forwards;
+  animation-delay: 2s;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Center Rose -->
+<div class="rose">
+  <div class="petal p1"></div>
+  <div class="petal p2"></div>
+  <div class="petal p3"></div>
+  <div class="petal p4"></div>
+  <div class="petal p5"></div>
+  <div class="petal p6"></div>
+  <div class="petal p7"></div>
+  <div class="petal p8"></div>
+  <div class="center"></div>
+</div>
+
+<!-- Signature -->
+<div class="signature">yours dumdum</div>
+
+<script>
+function createBgPetal() {
+  const p = document.createElement("div");
+  p.className = "bg-petal";
+  p.style.left = Math.random() * 100 + "vw";
+  p.style.top = "-20px";
+  p.style.animationDuration = (6 + Math.random() * 6) + "s";
+  document.body.appendChild(p);
+  setTimeout(() => p.remove(), 12000);
+}
+setInterval(createBgPetal, 300);
+</script>
+
+</body>
+</html>
